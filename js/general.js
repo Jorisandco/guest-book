@@ -1,0 +1,1 @@
+alert(InputEvent('Hello World'))

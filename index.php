@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>messages</title>
     <link rel="stylesheet" href="css/css.css">
-    
+
 </head>
 
 <body>
@@ -37,6 +37,7 @@
                         $messages = json_decode($myjsoncontent, true);
                     } else {
                         $lastId = end($messages)['id'] ?? 0;
+                        $msg->name = $_POST["name"];
                         $msg->message = $_POST["message"];
                         $msg->id = $lastId + 1;
 
@@ -56,9 +57,16 @@
             if ($messages !== null) {
                 foreach ($messages as $message) {
                     echo "<div class=\"textbox\">";
+                    echo "<div>";
+                    echo "<h3>";
+                    echo $message['name'];
+                    echo "</h3>";
+                    echo "</div>";
+                    echo "<br><div>";
                     echo "<p>";
                     echo $message['message'];
                     echo '</p>';
+                    echo '</div>';
                     echo "</div>";
                 }
             }
@@ -66,6 +74,7 @@
         </div>
         <div class="messageboxes">
             <form action="index.php" method="POST">
+                <input type="text" id="message" name="name" placeholder="Type your name">
                 <input type="text" id="message" name="message" placeholder="Type a message">
                 <input type="submit" id="sum" name="submit" value="Send">
             </form>
@@ -73,5 +82,6 @@
     </div>
 
 </body>
+<script src="js/general.js"></script>
 
 </html>

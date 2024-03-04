@@ -50,10 +50,11 @@ form{
     padding: 5px;
     margin: 15px;
     max-width: 50%;
+    flex-direction: column;
     width: fit-content;
     height: fit-content;
     background-color: white;
-    text-align: center;
+    text-align: left;
     box-shadow: 2px 2px 5px black;
     flex-wrap: wrap;
 }
