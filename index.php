@@ -6,31 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>messages</title>
     <link rel="stylesheet" href="css/css.css">
+    
 </head>
 
 <body>
     <div class="container">
-        <div class="info">
-            <div id="infoContact">
-                <div id="profilePicture"></div>
-                <div id="contactName">
-                    <p id="name">no known name</p>
-                </div>
-            </div>
-        </div>
         <div class="messages">
             <?php
+            $visit = 1;
+
             if (isset($_POST["message"]) && $_POST["message"] == "") {
                 $myjsoncontent = file_get_contents("json/messages.json");
                 $messages = json_decode($myjsoncontent, true);
-
-                if ($messages !== null) {
-                    foreach ($messages as $message) {
-                        echo "<div class=\"textbox\">";
-                        echo $message['message'];
-                        echo "</div>";
-                    }
-                }
+                $visit = 0;
             } else if (isset($_POST["message"]) && $_POST["message"]) {
                 if (isset($_POST["submit"]) && $_POST["submit"] == "Send") {
                     $msg = new stdClass();
@@ -47,19 +35,9 @@
                     if (in_array($_POST["message"], $existingMessages) && end($messages)['id'] ?? 0 == $existingIds) {
                         $myjsoncontent = file_get_contents("json/messages.json");
                         $messages = json_decode($myjsoncontent, true);
-
-                        if ($messages !== null) {
-                            foreach ($messages as $message) {
-                                echo "<div class=\"textbox\">";
-                                echo $message['message'];
-                                echo "</div>";
-                            }
-                        }
                     } else {
                         $lastId = end($messages)['id'] ?? 0;
-                        $msg->Divstart = "<div class=\"textbox\">";
                         $msg->message = $_POST["message"];
-                        $msg->divend = "</div>";
                         $msg->id = $lastId + 1;
 
                         $messages[] = $msg;
@@ -70,14 +48,18 @@
                         $myjsoncontent = file_get_contents("json/messages.json");
                         $messages = json_decode($myjsoncontent, true);
 
-                        if ($messages !== null) {
-                            foreach ($messages as $message) {
-                                echo "<div class=\"textbox\">";
-                                echo $message['message'];
-                                echo "</div>";
-                            }
-                        }
+
                     }
+                }
+            }
+
+            if ($messages !== null) {
+                foreach ($messages as $message) {
+                    echo "<div class=\"textbox\">";
+                    echo "<p>";
+                    echo $message['message'];
+                    echo '</p>';
+                    echo "</div>";
                 }
             }
             ?>

@@ -11,7 +11,7 @@
     grid-template-rows: 0.5fr 1fr 1fr 1fr 0.5fr; 
     gap: 0px 0px; 
     grid-template-areas: 
-      "info info info info"
+      "messages messages messages messages"
       "messages messages messages messages"
       "messages messages messages messages"
       "messages messages messages messages"
