@@ -14,10 +14,8 @@
         <div class="messages">
             <?php
             $visit = 1;
-
+            $myjsoncontent = file_get_contents("json/messages.json");
             if (isset($_POST["message"]) && $_POST["message"] == "") {
-                $myjsoncontent = file_get_contents("json/messages.json");
-                $messages = json_decode($myjsoncontent, true);
                 $visit = 0;
             } else if (isset($_POST["message"]) && $_POST["message"]) {
                 if (isset($_POST["submit"]) && $_POST["submit"] == "Send") {
@@ -45,15 +43,11 @@
 
                         $updatedJsonContent = json_encode($messages);
                         file_put_contents("json/messages.json", $updatedJsonContent);
-
-                        $myjsoncontent = file_get_contents("json/messages.json");
-                        $messages = json_decode($myjsoncontent, true);
-
-
                     }
                 }
             }
 
+            $messages = json_decode($myjsoncontent, true);
             if ($messages !== null) {
                 foreach ($messages as $message) {
                     echo "<div class=\"textbox\">";
@@ -70,6 +64,7 @@
                     echo "</div>";
                 }
             }
+
             ?>
         </div>
         <div class="messageboxes">
