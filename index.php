@@ -22,12 +22,12 @@
                     echo "<div class=\"textbox\">";
                     echo "<div>";
                     echo "<h3>";
-                    echo $message['name'];
+                    echo htmlspecialchars($message['name']);
                     echo "</h3>";
                     echo "</div>";
                     echo "<br><div>";
                     echo "<p>";
-                    echo $message['message'];
+                    echo htmlspecialchars($message['message']);
                     echo '</p>';
                     echo '</div>';
                     echo "</div>";
@@ -44,7 +44,6 @@
             </form>
         </div>
     </div>
-
 </body>
 <script src="js/general.js"></script>
 
