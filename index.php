@@ -69,7 +69,7 @@
         </div>
         <div class="messageboxes">
             <form action="index.php" method="POST">
-                <input type="text" id="message" name="name" placeholder="Type your name">
+                <input type="text" id="name" name="name" placeholder="Type your name">
                 <input type="text" id="message" name="message" placeholder="Type a message">
                 <input type="submit" id="sum" name="submit" value="Send">
             </form>
