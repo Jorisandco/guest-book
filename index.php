@@ -21,8 +21,8 @@
                 foreach ($messages as $message) {
                     echo "<div class=\"textbox\">";
                     echo "<div>";
-                    echo "<h3>";
-                    echo htmlspecialchars($message['name']);
+                    echo "<h3 class=\"nametext\">";
+                    echo "Name User: ", htmlspecialchars($message['name']);
                     echo "</h3>";
                     echo "</div>";
                     echo "<br><div>";
