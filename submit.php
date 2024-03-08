@@ -20,7 +20,7 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
         $existingnames = array_column($messages, 'name');
         if (in_array(strtoupper($_POST["name"]), array_map('strtoupper', $existingnames))) {
             $visit = 7;
-            echo"<script>alert('Name already exists!')</script>";
+            echo"ERROR 7006: Name has already been used";
         } else {
             $visit = 6;
             $lastId = end($messages)['id'] ?? 0;
