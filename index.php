@@ -39,7 +39,7 @@
         <div class="messageboxes">
             <form action="submit.php" method="POST">
                 <div class="textboxes">
-                    <input type="text" id="name" name="name" placeholder="Type your name">
+                    <input disabled="false" type="text" id="name" name="name" placeholder="Type your name">
                     <textarea type="text" id="message" name="message" placeholder="Type a message"></textarea>
                 </div>
                 <input type="submit" id="submit" name="submit" value="Send">
@@ -47,6 +47,25 @@
         </div>
     </div>
 </body>
+<script>
+    function getCookie(name) {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                return cookie.substring(name.length + 1);
+            }
+        }
+        return "";
+    }
+
+    if (getCookie('Username') != "") {
+        let nameref = document.getElementById('name');
+        nameref.value = getCookie('Username');
+        console.log(nameref.value);
+        nameref.disabled = true;
+    }
+</script>
 <script src="js/general.js"></script>
 
 </html>
