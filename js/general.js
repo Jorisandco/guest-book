@@ -8,13 +8,17 @@ submit.addEventListener('click', function (event) {
         if (cookieallowed) {
             document.cookie = `Username=${name} ; expires=${new Date(Date.now() + 12 * 24 * 60 * 60 * 1000)}; path=/`;
         }
-        else{
+        else {
             event.preventDefault();
             alert("Please allow cookies to use this feature");
         }
     }
 
-    if (name === "" && message === "") {
+    if (getCookie('Username') !== "") {
+        event.preventDefault();
+        alert("You have already posted a message");
+    }
+    else if (name === "" && message === "") {
         alert("Please enter your name and message");
         event.preventDefault();
     }
@@ -41,12 +45,12 @@ function getCookie(name) {
     return "";
 }
 
-function setcookieallowed(bool){
+function setcookieallowed(bool) {
     cookieallowed = bool;
     console.log(cookieallowed);
 }
 
-function setname(){
+function setname() {
     let nameref = document.getElementById('name');
     nameref.value = getCookie('Username');
     console.log(nameref.value);

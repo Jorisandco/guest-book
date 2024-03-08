@@ -39,7 +39,7 @@
         <div class="messageboxes">
             <form action="submit.php" method="POST">
                 <div class="textboxes">
-                    <input disabled="false" type="text" id="name" name="name" placeholder="Type your name">
+                    <input type="text" id="name" name="name" placeholder="Type your name">
                     <textarea type="text" id="message" name="message" placeholder="Type a message"></textarea>
                 </div>
                 <input type="submit" id="submit" name="submit" value="Send">
@@ -59,7 +59,7 @@
         return "";
     }
 
-    if (getCookie('Username') != "") {
+    if (getCookie('Username') !== "") {
         let nameref = document.getElementById('name');
         nameref.value = getCookie('Username');
         console.log(nameref.value);
