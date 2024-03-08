@@ -17,7 +17,8 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
         // Check if id already exists
         $existingIds = array_column($messages, 'id');
         $existingMessages = array_column($messages, 'message');
-        if (in_array($_POST["message"], $existingMessages) && end($messages)['id'] ?? 0 == $existingIds) {
+        $existingnames = array_column($messages, 'name');
+        if (in_array($_POST["message"], $existingMessages) && in_array($_POST["name"], $existingnames) && end($messages)['id'] ?? 0 == $existingIds) {
             $visit = 7;
             $myjsoncontent = file_get_contents("json/messages.json");
             $messages = json_decode($myjsoncontent, true);
