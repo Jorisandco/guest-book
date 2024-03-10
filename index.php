@@ -47,25 +47,6 @@
         </div>
     </div>
 </body>
-<script>
-    function getCookie(name) {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.startsWith(name + '=')) {
-                return cookie.substring(name.length + 1);
-            }
-        }
-        return "";
-    }
-
-    if (getCookie('Username') !== "") {
-        let nameref = document.getElementById('name');
-        nameref.value = getCookie('Username');
-        console.log(nameref.value);
-        nameref.disabled = true;
-    }
-</script>
-<script src="js/general.js"></script>
+<script src="js/generalss.js"></script>
 
 </html>
