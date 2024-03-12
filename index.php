@@ -25,8 +25,7 @@
                     echo "<h3 class=\"nametext\">";
                     echo "Name User: ", htmlspecialchars($message['name']);
                     echo "</h3>";
-                    echo "<br>";
-                    echo "<p>";
+                    echo "<p style=\"padding-top: 12.5px; padding-left: 10.4px\">";
                     echo htmlspecialchars($message['message']);
                     echo '</p>';
                     echo "<p style=\"font-size: 10px; text-align: right; margin: 2.5px; padding: 5px\">", htmlspecialchars($message['time']), "</p>";
