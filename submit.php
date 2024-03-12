@@ -20,7 +20,7 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
         $existingnames = array_column($messages, 'name');
         if (in_array(strtoupper($_POST["name"]), array_map('strtoupper', $existingnames))) {
             $visit = 7;
-            echo"ERROR 7006: Name has already been used";
+            echo "ERROR 7006: Name has already been used";
         } else {
             $visit = 6;
             $lastId = end($messages)['id'] ?? 0;
@@ -28,6 +28,15 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
             $msg->message = $_POST["message"];
             $msg->time = date("h:i:s");
             $msg->id = $lastId + 1;
+            
+            if (!empty($_FILES["fileToUpload"]["tmp_name"])) {
+                $uploadResult = uploadImage($_FILES["fileToUpload"]);
+                if (strpos($uploadResult, 'Sorry') === false) {
+                    $msg->image = basename($_FILES["fileToUpload"]["name"]);
+                } else {
+                    echo $uploadResult;
+                }
+            }
 
             $messages[] = $msg;
 
@@ -36,5 +45,5 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
         }
     }
 }
-header("Location: index.php", true, 301);  
+header("Location: index.php", true, 301);
 exit();

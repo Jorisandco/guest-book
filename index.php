@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="messages">
-            
+
             <?php
             $time = date("h:i:s");
             echo "beta 0.2.1 - $time";
@@ -28,6 +28,9 @@
                     echo "<p style=\"padding-top: 12.5px; padding-left: 10.4px\">";
                     echo htmlspecialchars($message['message']);
                     echo '</p>';
+                    if (isset($message['image'])) {
+                        echo "<img src=\"uploads/", htmlspecialchars($message['image']), "\" alt=\"\" style=\"width: 100%; height: auto; margin: 0px; padding: 0px\">";
+                    }
                     echo "<p style=\"font-size: 10px; text-align: right; margin: 2.5px; padding: 5px\">", htmlspecialchars($message['time']), "</p>";
                     echo "</div>";
                 }
@@ -37,6 +40,7 @@
         </div>
         <div class="messageboxes">
             <form action="submit.php" method="POST">
+                <input type="file" name="fileToUpload" id="fileToUpload">
                 <div class="textboxes">
                     <input type="text" id="name" name="name" placeholder="Type your name">
                     <textarea type="text" id="message" name="message" placeholder="Type a message"></textarea>
