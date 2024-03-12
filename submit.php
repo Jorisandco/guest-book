@@ -26,6 +26,7 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
             $lastId = end($messages)['id'] ?? 0;
             $msg->name = $_POST["name"];
             $msg->message = $_POST["message"];
+            $msg->time = date("h:i:s");
             $msg->id = $lastId + 1;
 
             $messages[] = $msg;
@@ -37,4 +38,3 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
 }
 header("Location: index.php", true, 301);  
 exit();
-?>

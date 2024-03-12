@@ -12,24 +12,24 @@
 <body>
     <div class="container">
         <div class="messages">
-
+            
             <?php
+            $time = date("h:i:s");
+            echo "beta 0.2.1 - $time";
             $myjsoncontent = file_get_contents("json/messages.json");
             $messages = json_decode($myjsoncontent, true);
 
             if ($messages !== null) {
                 foreach ($messages as $message) {
                     echo "<div class=\"textbox\">";
-                    echo "<div>";
                     echo "<h3 class=\"nametext\">";
                     echo "Name User: ", htmlspecialchars($message['name']);
                     echo "</h3>";
-                    echo "</div>";
-                    echo "<br><div>";
+                    echo "<br>";
                     echo "<p>";
                     echo htmlspecialchars($message['message']);
                     echo '</p>';
-                    echo '</div>';
+                    echo "<p style=\"font-size: 10px; text-align: right; margin: 2.5px; padding: 5px\">", htmlspecialchars($message['time']), "</p>";
                     echo "</div>";
                 }
             }

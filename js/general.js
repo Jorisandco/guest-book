@@ -58,4 +58,18 @@ function setname() {
     console.log(nameref.value);
 }
 
+document.getElementById("name").addEventListener("focus", function () {
+    document.getElementById("name").style.backgroundColor = "rgb(255, 255, 255)";
+})
+document.getElementById("name").addEventListener("blur", function () {
+    document.getElementById("name").style.backgroundColor = "rgb(164, 164, 164)";
+})
+document.getElementById("message").addEventListener("focus", function () {
+    document.getElementById("message").style.backgroundColor = "rgb(255, 255, 255)";
+})
+document.getElementById("message").addEventListener("blur", function () {
+    document.getElementById("message").style.backgroundColor = "rgb(164, 164, 164)";
+})
+
+
 console.log(cookieallowed)
