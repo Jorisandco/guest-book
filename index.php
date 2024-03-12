@@ -47,6 +47,6 @@
         </div>
     </div>
 </body>
-<script src="js/generalss.js"></script>
+<script src="js/general.js"></script>
 
 </html>

@@ -34,7 +34,7 @@ submit.addEventListener('click', function (event) {
 
 });
 let textboxref = document.querySelectorAll(".textbox")
-textboxref[textboxref.length - 1].style.backgroundColor = "rgb(254, 187, 255)";
+textboxref[textboxref.length - 1].style.backgroundColor = "rgb(255, 255, 255)";
 
 function getCookie(name) {
     const cookies = document.cookie.split(';');
