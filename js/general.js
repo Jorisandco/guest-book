@@ -5,25 +5,18 @@ submit.addEventListener('click', function (event) {
     const name = document.getElementById('name').value;
     const message = document.getElementById('message').value;
     let number = 0;
-    if (cookieallowed) {
-        if (name === "" && message === "" && number === 0) {
-            alert("Please enter your name and message");
-            event.preventDefault();
-        }
-        else if (name === "" && number === 0) {
-            alert("Please enter your name");
-            event.preventDefault();
-        }
-        else if (message === "" && number === 0) {
-            alert("Please enter your message");
-            event.preventDefault();
-        }
-    }
-    else {
+    if (name === "" && message === "" && number === 0) {
+        alert("Please enter your name and message");
         event.preventDefault();
-        alert("Please allow cookies, to use this feature");
     }
-
+    else if (name === "" && number === 0) {
+        alert("Please enter your name");
+        event.preventDefault();
+    }
+    else if (message === "" && number === 0) {
+        alert("Please enter your message");
+        event.preventDefault();
+    }
 });
 
 if (getCookie('allowedcookies') !== "") {
