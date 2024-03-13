@@ -10,12 +10,6 @@
 </head>
 
 <body>
-    <div id="modal">
-        <p>this website uses cookies for its main features</p>
-        <button id="accept" onclick="cookiesallowed(true)">Accept</button>
-        <button id="decline" onclick="cookiesallowed(false)">Decline</button>
-    </div>
-
     <div class="container">
         <div class="messages">
             <?php
