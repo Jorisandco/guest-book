@@ -10,12 +10,6 @@ submit.addEventListener('click', function (event) {
             document.cookie = `Username=${name} ; expires=${new Date(Date.now() + 12 * 24 * 60 * 60 * 1000)}; path=/`;
             console.log("cookie set");
         }
-        else if (getCookie('Username') !== "") {
-            event.preventDefault();
-            alert("You have already posted a message");
-            number = 1;
-        }
-
         if (name === "" && message === "" && number === 0) {
             alert("Please enter your name and message");
             event.preventDefault();
