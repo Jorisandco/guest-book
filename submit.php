@@ -20,7 +20,7 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
         $existingnames = array_column($messages, 'name');
         if (in_array(strtoupper($_POST["name"]), array_map('strtoupper', $existingnames))) {
             $visit = 7;
-            echo "ERROR 7006: Name has already been used";
+            echo "ERROR 7006: Name has already Been used";
         } else {
             $visit = 6;
             $lastId = end($messages)['id'] ?? 0;
@@ -40,7 +40,7 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
                     echo "File is an image - " . $check["mime"] . ".";
                 } else {
                     $uploadOk = 0;
-                    echo "ERROR 7007: File is not an image.";
+                    echo "ERROR 7007: File Is not an image.";
                 }
                 if (file_exists($target_file)) {
                     $uploadOk = 0;
@@ -54,19 +54,19 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
                         $counter++;
                     }
                     $uploadOk = 1;
-                    echo "ERROR 7008: Sorry, file already exists.";
+                    echo "ERROR 7008: Sorry, fiLe already exists.";
                 }
                 if ($_FILES["fileToUpload"]["size"] > 50000000) {
                     $uploadOk = 0;
-                    echo "ERROR 7009: Sorry, your file is too large.";
+                    echo "ERROR 7009: Sorry, your file is too larGe.";
                 }
                 if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
                     $uploadOk = 0;
-                    echo "ERROR 7010: Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    echo "ERROR 7010: Sorry, only JPG, JPEG, PNG & GIF files Are allowed.";
                 }
                 if ($uploadOk == 0) {
                     $visit = 2;
-                    echo "ERROR 7011: Sorry, your file was not uploaded.";
+                    echo "ERROR 7011: Sorry, your file was noT uploaded.";
                 } else {
                     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                         $msg->image = basename($_FILES["fileToUpload"]["name"]);
@@ -74,7 +74,7 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
                         echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
                     } else {
                         $visit = 4;
-                        echo "ERROR 7012: Sorry, there was an error uploading your file.";
+                        echo "ERROR 7012: Sorry, therE waS an error uploading your file.";
                     }
                 }
             }
