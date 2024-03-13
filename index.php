@@ -19,7 +19,7 @@
     <div class="container">
         <div class="messages">
             <?php
-            echo "<h2 style=\"color: white\">----- 1.0.0 -----</h2>";
+            echo "<h2 style=\"color: white\">----- 1.0.0 -----</h2> <br>";
             $myjsoncontent = file_get_contents("json/messages.json");
             $messages = json_decode($myjsoncontent, true);
 
