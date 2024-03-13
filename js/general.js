@@ -36,7 +36,6 @@ submit.addEventListener('click', function (event) {
 
 });
 
-
 if (getCookie('allowedcookies') !== "") {
     document.getElementById("modal").style.display = "none";
     cookieallowed = true;

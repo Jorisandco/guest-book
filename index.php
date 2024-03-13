@@ -19,8 +19,7 @@
     <div class="container">
         <div class="messages">
             <?php
-            $time = date("h:i:s");
-            echo "beta 0.6.8 - $time";
+            echo "<h2 style=\"color: white\">----- 1.0.0 -----</h2>";
             $myjsoncontent = file_get_contents("json/messages.json");
             $messages = json_decode($myjsoncontent, true);
 
