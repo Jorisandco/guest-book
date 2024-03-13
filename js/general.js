@@ -19,17 +19,6 @@ submit.addEventListener('click', function (event) {
     }
 });
 
-if (getCookie('allowedcookies') !== "") {
-    document.getElementById("modal").style.display = "none";
-    cookieallowed = true;
-    console.log("cookie found");
-}
-else {
-    document.getElementById("modal").style.display = "flex";
-    cookieallowed = false;
-    console.log("cookie not found");
-}
-
 let textboxref = document.querySelectorAll(".textbox")
 textboxref[textboxref.length - 1].style.backgroundColor = "rgb(255, 255, 255)";
 

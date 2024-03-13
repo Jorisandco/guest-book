@@ -24,7 +24,7 @@
                     echo "Name User: ", htmlspecialchars($message['name']);
                     echo "</h3>";
                     if (isset($message['image'])) {
-                        echo "<img src=\"uploads/", htmlspecialchars($message['image']), "\" alt=\"\" style=\"max-width: 250px; height: auto; margin: 0px; padding: 0px\">";
+                        echo "<img class=\"imagestyle\" src=\"uploads/", htmlspecialchars($message['image']), "\" alt=\"\" style=\"\">";
                     }
                     echo "<p style=\"padding-top: 12.5px; padding-left: 10.4px\">";
                     echo htmlspecialchars($message['message']);

@@ -18,10 +18,6 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
         $existingIds = array_column($messages, 'id');
         $existingMessages = array_column($messages, 'message');
         $existingnames = array_column($messages, 'name');
-        if (in_array(strtoupper($_POST["name"]), array_map('strtoupper', $existingnames))) {
-            $visit = 7;
-            echo "ERROR 7006: Name has already Been used";
-        } else {
             $visit = 6;
             $lastId = end($messages)['id'] ?? 0;
             $msg->name = $_POST["name"];
@@ -88,6 +84,6 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
             file_put_contents("json/messages.json", $updatedJsonContent);
         }
     }
-}
+
 header("Location: index.php", true, 301);
 exit();
