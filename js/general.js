@@ -6,10 +6,6 @@ submit.addEventListener('click', function (event) {
     const message = document.getElementById('message').value;
     let number = 0;
     if (cookieallowed) {
-        if (name.length > 1 && getCookie('Username') === "") {
-            document.cookie = `Username=${name} ; expires=${new Date(Date.now() + 12 * 24 * 60 * 60 * 1000)}; path=/`;
-            console.log("cookie set");
-        }
         if (name === "" && message === "" && number === 0) {
             alert("Please enter your name and message");
             event.preventDefault();
@@ -73,20 +69,3 @@ document.getElementById("message").addEventListener("focus", function () {
 document.getElementById("message").addEventListener("blur", function () {
     document.getElementById("message").style.backgroundColor = "rgb(164, 164, 164)";
 })
-
-
-function cookiesallowed(bool) {
-    if (bool) {
-        cookieallowed = true;
-        console.log(cookieallowed);
-        document.cookie = `allowedcookies=1 ; expires=${new Date(Date.now() + 12 * 24 * 60 * 60 * 1000)}; path=/`;
-        document.getElementById("modal").style.display = "none";
-    }
-    else {
-        cookieallowed = false;
-        console.log(cookieallowed);
-        document.getElementById("modal").style.display = "none";
-    }
-}
-
-console.log(cookieallowed)
