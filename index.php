@@ -10,12 +10,17 @@
 </head>
 
 <body>
+    <div id="modal">
+        <p>this website uses cookies for its main features</p>
+        <button id="accept" onclick="cookiesallowed(true)">Accept</button>
+        <button id="decline" onclick="cookiesallowed(false)">Decline</button>
+    </div>
+
     <div class="container">
         <div class="messages">
-
             <?php
             $time = date("h:i:s");
-            echo "beta 0.2.1 - $time";
+            echo "beta 0.6.8 - $time";
             $myjsoncontent = file_get_contents("json/messages.json");
             $messages = json_decode($myjsoncontent, true);
 
