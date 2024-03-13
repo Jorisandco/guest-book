@@ -44,6 +44,16 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
                 }
                 if (file_exists($target_file)) {
                     $uploadOk = 0;
+                    $filename = pathinfo($target_file, PATHINFO_FILENAME);
+                    $extension = pathinfo($target_file, PATHINFO_EXTENSION);
+                    $counter = 1;
+
+                    while (file_exists($target_file)) {
+                        $new_filename = $filename . '_' . $counter . '.' . $extension;
+                        $target_file = $target_dir . $new_filename;
+                        $counter++;
+                    }
+                    $uploadOk = 1;
                     echo "ERROR 7008: Sorry, file already exists.";
                 }
                 if ($_FILES["fileToUpload"]["size"] > 50000000) {
