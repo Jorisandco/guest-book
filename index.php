@@ -25,12 +25,12 @@
                     echo "<h3 class=\"nametext\">";
                     echo "Name User: ", htmlspecialchars($message['name']);
                     echo "</h3>";
+                    if (isset($message['image'])) {
+                        echo "<img src=\"uploads/", htmlspecialchars($message['image']), "\" alt=\"\" style=\"max-width: 500px; height: auto; margin: 0px; padding: 0px\">";
+                    }
                     echo "<p style=\"padding-top: 12.5px; padding-left: 10.4px\">";
                     echo htmlspecialchars($message['message']);
                     echo '</p>';
-                    if (isset($message['image'])) {
-                        echo "<img src=\"uploads/", htmlspecialchars($message['image']), "\" alt=\"\" style=\"width: 100%; height: auto; margin: 0px; padding: 0px\">";
-                    }
                     echo "<p style=\"font-size: 10px; text-align: right; margin: 2.5px; padding: 5px\">", htmlspecialchars($message['time']), "</p>";
                     echo "</div>";
                 }
@@ -39,7 +39,7 @@
 
         </div>
         <div class="messageboxes">
-            <form action="submit.php" method="POST">
+            <form action="submit.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <div class="textboxes">
                     <input type="text" id="name" name="name" placeholder="Type your name">

@@ -28,16 +28,50 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
             $msg->message = $_POST["message"];
             $msg->time = date("h:i:s");
             $msg->id = $lastId + 1;
-            
-            if (!empty($_FILES["fileToUpload"]["tmp_name"])) {
-                $uploadResult = uploadImage($_FILES["fileToUpload"]);
-                if (strpos($uploadResult, 'Sorry') === false) {
-                    $msg->image = basename($_FILES["fileToUpload"]["name"]);
+
+            if (!empty($_FILES['fileToUpload']['name'])) {
+                $target_dir = "uploads/";
+                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check !== false) {
+                    $uploadOk = 1;
+                    echo "File is an image - " . $check["mime"] . ".";
                 } else {
-                    echo $uploadResult;
+                    $uploadOk = 0;
+                    echo "ERROR 7007: File is not an image.";
+                }
+                if (file_exists($target_file)) {
+                    $uploadOk = 0;
+                    echo "ERROR 7008: Sorry, file already exists.";
+                }
+                if ($_FILES["fileToUpload"]["size"] > 500000) {
+                    $uploadOk = 0;
+                    echo "ERROR 7009: Sorry, your file is too large.";
+                }
+                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                    $uploadOk = 0;
+                    echo "ERROR 7010: Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                }
+                if ($uploadOk == 0) {
+                    $visit = 2;
+                    echo "ERROR 7011: Sorry, your file was not uploaded.";
+                } else {
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        $msg->image = basename($_FILES["fileToUpload"]["name"]);
+                        $visit = 3;
+                        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+                    } else {
+                        $visit = 4;
+                        echo "ERROR 7012: Sorry, there was an error uploading your file.";
+                    }
                 }
             }
-
+            else{
+                echo"what is an image";
+            }
+            
             $messages[] = $msg;
 
             $updatedJsonContent = json_encode($messages);
@@ -45,5 +79,5 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
         }
     }
 }
-header("Location: index.php", true, 301);
-exit();
+// header("Location: index.php", true, 301);
+// exit();
