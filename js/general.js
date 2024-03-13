@@ -39,12 +39,12 @@ submit.addEventListener('click', function (event) {
 
 if (getCookie('allowedcookies') !== "") {
     document.getElementById("modal").style.display = "none";
-    allowcookies = true;
-    console.log("cookie  found");
+    cookieallowed = true;
+    console.log("cookie found");
 }
 else {
     document.getElementById("modal").style.display = "flex";
-    allowcookies = false;
+    cookieallowed = false;
     console.log("cookie not found");
 }
 
