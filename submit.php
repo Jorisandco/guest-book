@@ -46,7 +46,7 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
                     $uploadOk = 0;
                     echo "ERROR 7008: Sorry, file already exists.";
                 }
-                if ($_FILES["fileToUpload"]["size"] > 500000) {
+                if ($_FILES["fileToUpload"]["size"] > 50000000) {
                     $uploadOk = 0;
                     echo "ERROR 7009: Sorry, your file is too large.";
                 }
@@ -79,5 +79,5 @@ if (isset($_POST["message"]) && $_POST["message"] == "") {
         }
     }
 }
-// header("Location: index.php", true, 301);
-// exit();
+header("Location: index.php", true, 301);
+exit();
