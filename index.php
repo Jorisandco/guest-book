@@ -40,8 +40,8 @@
             <form action="submit.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <div class="textboxes">
-                    <input type="text" id="name" name="name" placeholder="Type your name">
-                    <textarea type="text" id="message" name="message" placeholder="Type a message"></textarea>
+                <input type="text" id="name" name="name" placeholder="Type your name(character limit 255max)">
+                    <textarea type="text" id="message" name="message" placeholder="Type a message(character limit 1000max)"></textarea>
                 </div>
                 <input type="submit" id="submit" name="submit" value="Send">
             </form>
