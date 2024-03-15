@@ -5,7 +5,16 @@ submit.addEventListener('click', function (event) {
     const name = document.getElementById('name').value;
     const message = document.getElementById('message').value;
     let number = 0;
-    if (name === "" && message === "" && number === 0) {
+    const namelimit = 256;
+    const messagelimit = 1001;
+     if(name.length > namelimit || message.length > messagelimit){
+         event.preventDefault();
+         alert("Name and/or message too long");
+         document.getElementById('name').value = "";
+         document.getElementById('message').value = "";
+         number = 1;
+     }
+    else if (name === "" && message === "" && number === 0) {
         alert("Please enter your name and message");
         event.preventDefault();
     }
